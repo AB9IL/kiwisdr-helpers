@@ -6,6 +6,8 @@ Parse, filter, and sort kiwisdr site data and generate html lists.
 
 These scripts are written to parse the data file which lists the publicly accessible KiwiSDR servers at [kiwisdr.com/public](http://kiwisdr.com/public/) and used by [Dyatlov Mapmaker](https://github.com/priyom/dyatlov). After parsing raw KiwiSDR data, the scripts sort, filter, and restructure the data as html for building web pages. They build working pages by substituting current data into templates.
 
+You can do a lot of things with the methods you'll find in this code. For every kind of monitoring niche, there is a way to build up a list of the most suitable radios. Downloading the raw data takes several seconds on modest broadband, but processing it with these scripts is very fast - well under a second on the server.
+
 ### Files:
 
 #### stripper:
