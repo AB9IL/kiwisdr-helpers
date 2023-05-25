@@ -3,7 +3,7 @@
 # set up a list of dictionaries containing SDR data
 # for import by Python scripts
 # remove the first 6 and last lines of the file
-listpath="../../rx.skywavelinux.com/kiwisdr_com.js"
+listpath="../dyatlov/kiwisdr_com.js"
 
 kiwidata="$(tail -n +7 "$listpath" | head -n -1)"
 echo "dictlist = $kiwidata" > kiwisdr_stripped.py
@@ -14,3 +14,5 @@ echo "dictlist = $kiwidata" > kiwisdr_stripped.py
 python3 ./kiwisdr_best.py &
 python3 ./hfgcs_updater.py &
 python3 ./volmet_updater.py &
+python3 ./canada_updater.py &
+python3 ./ausnz_updater.py &
