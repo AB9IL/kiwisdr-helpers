@@ -17,7 +17,13 @@ Written in Bash; parses kiwisdr_com.js and creates a Python list of dictionaries
 Written in Python; parses data in kiwisdr_stripped.py, filters and sorts sites by snr score, and writes links into an html file. Builds the basic [Best KiwiSDR Server List](https://skywavelinux.com/best-sdrservers.html).
 
 #### hfgcs_updater.py:
-Written in Python; parses data in kiwisdr_stripped.py, filters and sorts sites by snr score, further filters by geographical area, them and writes links into an html file. Builds the [Quick Tune HFGCS List](https://skywavelinux.com/hfgcs-quick-tune-list.html).
+Written in Python; parses data in kiwisdr_stripped.py, filters and sorts sites by snr score, further filters by geographical area, then and writes links into an html file. Builds the [Quick Tune HFGCS List](https://skywavelinux.com/hfgcs-quick-tune-list.html).
 
 #### volmet_updater.py:
-Written in Python; parses data in kiwisdr_stripped.py, filters and sorts sites by snr score, further filters by geographical area, them and writes links into an html file. Builds the [VOLMET Quick Tune SDR List](https://skywavelinux.com/quicktune-volmets.html).
+Written in Python; parses data in kiwisdr_stripped.py, filters and sorts sites by snr score, further filters by geographical area, then and writes links into an html file. Builds the [VOLMET Quick Tune SDR List](https://skywavelinux.com/quicktune-volmets.html).
+
+#### canada_updater.py:
+Written in Python; parses data in kiwisdr_stripped.py, filters and sorts sites by snr score, further filters by geographical area, then and writes links into an html file. Builds the [KiwiSDR Canada List](https://skywavelinux.com/kiwisdr-canada.html)).
+
+#### ausnz_updater.py:
+Written in Python; parses data in kiwisdr_stripped.py, filters and sorts sites by snr score, further filters by geographical area, then and writes links into an html file. Builds the [KiwiSDR Australia and New Zealand List](https://skywavelinux.com/kiwisdr-ausnz.html).
