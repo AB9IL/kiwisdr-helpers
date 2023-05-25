@@ -4,50 +4,41 @@ import shutil
 from kiwisdr_stripped import dictlist
 
 # file for inclusion in html
-origin_txt_file = "../quicktune-volmets.html.orig"
-final_txt_file = "../quicktune-volmets.html"
+origin_txt_file = "../kiwisdr-canada.html.orig"
+final_txt_file = "../kiwisdr-canada.html"
 shutil.copy(origin_txt_file, final_txt_file)
 
 # filter the list of dictionaries by latitude longitude
 # use geographic boxes bounded by: (south, north, west, east)
-# Gander, Canada
-gander_area = ['--Gander--',
-               42.5, 60.0, -83.0, -50.0]
+# Halifax, NS
+halifax_area = ['--Halifax--', 43.0, 49.0, -67.5, -57.5]
 
-# Shannon, Ireland
-shannon_area = ['--Shannon--',
-                49.5, 60.0, -12.0, 4.0]
+# Montreal, QC
+montreal_area = ['--Montreal--', 44.9, 47.4, -75.0, -72.0]
 
-# Tokyo,
-tokyo_area = ['--Tokyo--',  23.5, 45.5, 123.5, 147.0]
+# Ottawa, QC
+ottawa_area = ['--Ottawa--',  44.3, 46.0, -77.0, -74.3]
 
-# Hong Kong
-hk_area = ['--HongKong--',  7.3, 27.5, 118.5, 130.0]
+# Toronto, ON
+toronto_area = ['--Toronto--',  42.8, 44.6, -81.3, -77.3]
 
-# Auckland
-aunz_area = ['--Auckland--',  -49.0, -32.0, 163.0, 187.0]
+# Winnipeg, MB
+winnipeg_area = ['--Winnipeg--',  49.3, 50.5, -98.5, -96.0]
 
-# Australia
-aust_area = ['--Australia--',  23.5, 45.5, 123.5, 147.0]
+# Regina and Saskatoon, SK
+regsask_area = ['--Regina-Saskatoon--', 47.9, 54.0, -111.9, -98.5]
 
-# Beijing and Guangzhou
-bjgz_area = ['--BeijingGuangzhou--', 7.3, 27.5, 118.5, 130.0]
+# Edmonton, AB
+edmonton_area = ['--Edmonton--',  51.7, 55.0, -116.0, -110.5]
 
-# South Asia
-sa_area = ['--SouthAsia--', -11.5, 30.0, 66.0, 131.0]
+# Calgary, AB
+calgary_area = ['--Calgary--', 49.7, 52.3, -116.0, -111.0]
 
-# La Paz
-lapaz_area = ['--LaPaz--', -43.0, 12.0, -82.0, -34.0]
+# Vancouver, BC
+vancouver_area = ['--Vancouver--', 48.2, 49.9, -124.0, -120.5]
 
-# Resistencia
-resistencia_area = ['--Resistencia--', -70.0, -11.0, -82.0, -40.0]
-
-# Petersburg and Rostov
-peter_rost_area = ['--StPetersburgRostov--', 47.0, 71.0, -29.0, 60.0]
-
-regions = [gander_area, shannon_area, tokyo_area, hk_area, aunz_area,
-           aust_area, bjgz_area, sa_area, lapaz_area, resistencia_area,
-           peter_rost_area]
+regions = [halifax_area, montreal_area, ottawa_area, toronto_area, winnipeg_area,
+           regsask_area, edmonton_area, calgary_area, vancouver_area]
 
 
 def sort_servers(dictlist, area):
@@ -56,7 +47,7 @@ def sort_servers(dictlist, area):
     lat_range = [area[1], area[2]]
     lon_range = [area[3], area[4]]
     listcount = 5
-    min_snr = 19
+    min_snr = 9
     dictlist = list(filter(lambda site: int(site["snr"][-2:].replace(',', ''))
                                 > min_snr, dictlist))
     # sort the list of dicts by snr, latitude, and longitude

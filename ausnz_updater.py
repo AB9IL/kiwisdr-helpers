@@ -4,50 +4,51 @@ import shutil
 from kiwisdr_stripped import dictlist
 
 # file for inclusion in html
-origin_txt_file = "../quicktune-volmets.html.orig"
-final_txt_file = "../quicktune-volmets.html"
+origin_txt_file = "../kiwisdr-ausnz.html.orig"
+final_txt_file = "../kiwisdr-ausnz.html"
 shutil.copy(origin_txt_file, final_txt_file)
 
 # filter the list of dictionaries by latitude longitude
 # use geographic boxes bounded by: (south, north, west, east)
-# Gander, Canada
-gander_area = ['--Gander--',
-               42.5, 60.0, -83.0, -50.0]
+# Adelaide, SAU
+adelaide_area = ['--Adelaide--', -36.0, 32.5, 135.0, 141.0]
 
-# Shannon, Ireland
-shannon_area = ['--Shannon--',
-                49.5, 60.0, -12.0, 4.0]
+# Auckland, AUK
+auckland_area = ['--Auckland--', -39.0, -34.0, 172.0, 179.0]
 
-# Tokyo,
-tokyo_area = ['--Tokyo--',  23.5, 45.5, 123.5, 147.0]
+# Brisbane, QLD
+brisbane_area = ['--Brisbane--', -28.3, -25.3, 151.0, 154.0]
 
-# Hong Kong
-hk_area = ['--HongKong--',  7.3, 27.5, 118.5, 130.0]
+# Burnie, TAS
+burnie_area = ['--Burnie--', -44.3, -39.3, 143.0, 149.0]
 
-# Auckland
-aunz_area = ['--Auckland--',  -49.0, -32.0, 163.0, 187.0]
+# Canberra, NSW
+canberra_area = ['--Canberra--',  -36.5, -34.7, 147.0, 151.0]
 
-# Australia
-aust_area = ['--Australia--',  23.5, 45.5, 123.5, 147.0]
+# Christchurch, CAN
+christchurch_area = ['--Christchurch--',  -44.5, -42.0, 169.0, 174.5]
 
-# Beijing and Guangzhou
-bjgz_area = ['--BeijingGuangzhou--', 7.3, 27.5, 118.5, 130.0]
+# Darwin, NT
+darwin_area = ['--Darwin--',  -16.0, -10.0, 129.0, 137.0]
 
-# South Asia
-sa_area = ['--SouthAsia--', -11.5, 30.0, 66.0, 131.0]
+# Melbourne, VIC
+melbourne_area = ['--Melbourne--',  -39.4, -36.0, 142.0, 147.0]
 
-# La Paz
-lapaz_area = ['--LaPaz--', -43.0, 12.0, -82.0, -34.0]
+# Newcastle, NSW
+newcastle_area = ['--Newcastle--',  -33.5, -31.5, 149.5, 153.0]
 
-# Resistencia
-resistencia_area = ['--Resistencia--', -70.0, -11.0, -82.0, -40.0]
+# Perth, WA
+perth_area = ['--Perth--', -33.5, -30.0, 114.0, 119.5]
 
-# Petersburg and Rostov
-peter_rost_area = ['--StPetersburgRostov--', 47.0, 71.0, -29.0, 60.0]
+# Sydney, NSW
+sydney_area = ['--Sydney--',  -35.0, -32.5, 149.5, 152.0]
 
-regions = [gander_area, shannon_area, tokyo_area, hk_area, aunz_area,
-           aust_area, bjgz_area, sa_area, lapaz_area, resistencia_area,
-           peter_rost_area]
+# Wellington, WGN
+wellington_area = ['--Wellington--', -42.5, -38.7, 171.0, 179.0]
+
+regions = [adelaide_area, auckland_area, brisbane_area, burnie_area,
+           canberra_area, christchurch_area, darwin_area, melbourne_area,
+           newcastle_area, perth_area, sydney_area, wellington_area]
 
 
 def sort_servers(dictlist, area):
@@ -56,7 +57,7 @@ def sort_servers(dictlist, area):
     lat_range = [area[1], area[2]]
     lon_range = [area[3], area[4]]
     listcount = 5
-    min_snr = 19
+    min_snr = 9
     dictlist = list(filter(lambda site: int(site["snr"][-2:].replace(',', ''))
                                 > min_snr, dictlist))
     # sort the list of dicts by snr, latitude, and longitude
