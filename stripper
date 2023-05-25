@@ -1,18 +1,74 @@
-#!/bin/bash
+#!/usr/bin/env python3
 
-# set up a list of dictionaries containing SDR data
-# for import by Python scripts
-# remove the first 6 and last lines of the file
-listpath="../dyatlov/kiwisdr_com.js"
+# Copyright (c) 2023 by Philip Collier, github.com/AB9IL
+# This script is free software; you can redistribute it and/or modify
+# it under the terms of the GNU General Public License as published by
+# the Free Software Foundation; either version 3 of the License, or
+# (at your option) any later version. There is NO warranty; not even for
+# MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
 
-kiwidata="$(tail -n +7 "$listpath" | head -n -1)"
-echo "dictlist = $kiwidata" > kiwisdr_stripped.py
+# This updater is for systems WITH Dyatlov Mapmaker running. If you
+# have Dyatlov Mapmaker creating your KiwiSDR maps, set the variable
+# "current_list" to that file in the mapmaker's directory.
+
+import os
+import time
+
+import requests
+
+# filename of the KiwiSDR list created by Dyatlov MapMaker
+current_list = "kiwisdr_com.js"
+# filename of the unsorted list
+stripped_list = "kiwisdr_stripped.py"
+# filename of the sorter script
+sorter_scripts = {"kiwisdr_best.py", "hfgcs_updater.py", "volmet_updater.py",
+                  "canada_updater.py", "ausnz_updater.py"}
+
+# These paths may be the same or different, depending
+# on where you set up your html and other users
+# of the data.
+
+# path to the kiwidata directory
+kiwidata_dir = "/var/www/html/kiwidata/"
+
+# paths to the lists and sorterscript
+curent_path = "/var/www/html/dyatlov/" + current_list
+stripped_path = "/var/www/html/kiwidata/" + stripped_list
+sorter_path = "/var/www/html/kiwidata/"
+
+# base urls where the list can be downloaded
+# url = "http://rx.linkfanel.net/"
+url = "https://rx.skywavelinux.com/"
+
+###############################################################################
+#       Edit the variables above; avoid editing the code below
+###############################################################################
+
+# age is measured in epoch seconds
+try:
+    creation_time = os.path.getctime(curent_path)
+except Exception:
+    creation_time = 0
+
+max_age = creation_time + 3600
+time_now = time.time()
+
+kiwi_semiproc = curent_path
+
+if time_now > max_age:
+    print("Downloading a fresh list of KiwiSDRs")
+    with requests.get(url + current_list, stream=True) as list_file, \
+            open(kiwi_semiproc, 'w') as out_file:
+        out_file.write(list_file.text)
+
+with open(kiwi_semiproc, 'r') as in_file, \
+        open(stripped_path, 'w') as out_file:
+    lines = in_file.readlines()
+    out_file.write('dictlist = [\n')
+    out_file.writelines(lines[7:-1])
 
 # run scripts to use refined sdr data
 #
-# best sdrs according to SNR
-python3 ./kiwisdr_best.py &
-python3 ./hfgcs_updater.py &
-python3 ./volmet_updater.py &
-python3 ./canada_updater.py &
-python3 ./ausnz_updater.py &
+for sorter_script in sorter_scripts:
+    command = f"python3 {sorter_path}{sorter_script}"
+    os.system(command)
