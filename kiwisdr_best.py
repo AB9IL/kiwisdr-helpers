@@ -16,6 +16,9 @@ mykeys = ['url', 'loc']
 sdrlist = []
 dictlist = list(filter(lambda site: int(site["snr"][-2:].replace(',', ''))
         > min_snr, dictlist))
+# exclude sites with no available channels
+dictlist = list(filter(lambda site: float(site["users"])
+        < float(site["users_max"]), dictlist))
 
 # sort the list of dicts by snr and truncate
 dictlist.sort(key=lambda item: item.get("snr"), reverse=True)
