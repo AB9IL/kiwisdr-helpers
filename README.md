@@ -27,3 +27,9 @@ Written in Python; parses data in kiwisdr_stripped.py, filters and sorts sites b
 
 #### ausnz_updater.py:
 Written in Python; parses data in kiwisdr_stripped.py, filters and sorts sites by snr score, further filters by geographical area, then and writes links into an html file. Builds the [KiwiSDR Australia and New Zealand List](https://skywavelinux.com/kiwisdr-ausnz.html).
+
+#### hf_aero_redirects.py
+Written in Python; parses data in kiwisdr_stripped.py, filters and sorts sites by snr score, further filters by geographical area, then and writes files containing php redirects to KiwiSDRs. Capable of switching frequencies based on day / night time. Builds the [HF Aero Redirects](https://skywavelinux.com/hf-aero0) and more.
+
+#### sdr_redirects.py
+Written in Python; parses data in kiwisdr_stripped.py, filters and sorts sites by snr score, further filters by geographical area, then and writes files containing php redirects to KiwiSDRs. Capable of switching frequencies based on day / night time, mode setting. Builds the [SDR Redirects](https://www.ab9il.net/monitor0) and more.
