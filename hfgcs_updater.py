@@ -55,6 +55,10 @@ def sort_servers(dictlist, area):
                                 > lon_range[0], dictlist))
     dictlist = list(filter(lambda site: float(site["gps"].split(',')[1][:-1])
                                 < lon_range[1], dictlist))
+    # exclude sites with no available channels
+    dictlist = list(filter(lambda site: float(site["users"])
+                                < float(site["users_max"]), dictlist))
+
     # truncate the list
     dictlist = dictlist[0:listcount]
     # build the list of servers
