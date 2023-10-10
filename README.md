@@ -33,3 +33,6 @@ Written in Python; parses data in kiwisdr_stripped.py, filters and sorts sites b
 
 #### sdr_redirects.py
 Written in Python; parses data in kiwisdr_stripped.py, filters and sorts sites by snr score, further filters by geographical area, then and writes files containing php redirects to KiwiSDRs. Capable of switching frequencies based on day / night time, mode setting. Builds the [SDR Redirects](https://www.ab9il.net/monitor0) and more.
+
+#### sdr-stream:
+Written in Bash. Requires Rofi and / or fzf.  Provide easy and rapid access to favorite stations on KiwiSDR servers.  Reads station data in "sdr-stream-bookmarks" and provides a fuzzy finder list to the user. The bookmarks (and kiwisdr server urls) are sorted and formatted by "sdr-stream-bookmarks.py" in a manner similar to the regional updaters listed above. This SDR streamer differs as it may support an arbitrarily long list of radio bookmarks in any geographic area. The area must be defined in "sdr-stream-bookmarks.py" and station info defined in "sdr-stream-bookmarks-template."
