@@ -22,7 +22,7 @@ current_list = "kiwisdr_com.js"
 stripped_list = "kiwisdr_stripped.py"
 # filename of the sorter script
 sorter_scripts = {"kiwisdr_best.py", "hfgcs_updater.py", "volmet_updater.py",
-                  "canada_updater.py", "ausnz_updater.py"}
+                  "canada_updater.py", "ausnz_updater.py", "sdr-stream-bookmarks.py"}
 
 # These paths may be the same or different, depending
 # on where you set up your html and other users
